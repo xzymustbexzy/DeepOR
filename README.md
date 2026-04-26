@@ -14,27 +14,6 @@ Official implementation of **DeepOR**, a deep reasoning foundation model specifi
 
 DeepOR addresses the challenge of automating operations research (OR) optimization modeling — transforming natural language problem descriptions into formal mathematical models and executable solver code. Unlike prior approaches that directly generate solutions, DeepOR explicitly performs multi-step intermediate reasoning, mimicking how human experts solve complex OR problems.
 
-Our training framework consists of three stages:
-
-1. **Expert Flowchart Generation** — An expert flowchart (DAG) that mimics human problem-solving procedures is automatically generated using a self-exploration algorithm.
-
-2. **Expertise Tuning (SFT)** — Chain-of-Thought (CoT) data is synthesized under the guidance of the flowchart and used for supervised fine-tuning of the base LLM.
-
-3. **Self-Improvement Learning (GRPO)** — Reinforcement learning with **Group Relative Policy Optimization (GRPO)** and a **modeling checklist reward-shaping mechanism** further enhances reasoning capabilities.
-
-## Key Results
-
-DeepOR achieves state-of-the-art accuracy across diverse OR modeling benchmarks, outperforming both general-purpose reasoning LLMs (DeepSeek-R1, OpenAI o3) and specialized OR models (ORLM, LLMOpt, OPTMath, SIRL):
-
-| Benchmark | Description | DeepOR | SIRL | OpenAI o3 |
-|---|---|---|---|---|
-| **NL4Opt** | Natural Language for Optimization | **96.7%** | 96.2% | 96.0% |
-| **NLP4LP** | NLP → LP | **82.9%** | 80.6% | 81.0% |
-| **ReSocratic** | Socratic reasoning | **73.8%** | 72.6% | 74.8% |
-| **EasyLP** | Easy LP subset | **93.2%** | 91.8% | 92.4% |
-| **ComplexOR** | Complex OR problems | **64.3%** | 53.6% | 60.7% |
-| **ComplexLP** | Complex LP subset | **67.1%** | 63.4% | 65.8% |
-
 ## Repository Structure
 
 ```
@@ -193,12 +172,6 @@ If you find this work useful, please cite:
   organization={AAAI}
 }
 ```
-
-## Acknowledgments
-
-- The Chain-of-Experts framework is adapted from [Chain-of-Experts (ICLR 2024)](https://openreview.net/forum?id=HobyL1B9CZ).
-- The SFT stage is built on top of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory).
-- The GRPO implementation leverages the [TRL](https://github.com/huggingface/trl) library.
 
 ## License
 
