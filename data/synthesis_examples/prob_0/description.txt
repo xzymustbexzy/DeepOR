@@ -1,0 +1,43 @@
+You are tasked with optimizing the selection of items to be packed into a knapsack for a logistics operation. The goal is to maximize the total value of the selected items while ensuring that the combined weight of the items does not exceed the knapsack's weight capacity. 
+
+There are **25 items** available, each with a specific **value** and **weight**. The items are labeled as **item_0** through **item_24**. The value and weight of each item are as follows:
+
+- **item_0**: Value = 327, Weight = 29  
+- **item_1**: Value = 314, Weight = 48  
+- **item_2**: Value = 231, Weight = 30  
+- **item_3**: Value = 184, Weight = 42  
+- **item_4**: Value = 310, Weight = 45  
+- **item_5**: Value = 312, Weight = 39  
+- **item_6**: Value = 287, Weight = 36  
+- **item_7**: Value = 273, Weight = 46  
+- **item_8**: Value = 280, Weight = 33  
+- **item_9**: Value = 329, Weight = 55  
+- **item_10**: Value = 259, Weight = 38  
+- **item_11**: Value = 309, Weight = 51  
+- **item_12**: Value = 249, Weight = 38  
+- **item_13**: Value = 189, Weight = 44  
+- **item_14**: Value = 251, Weight = 43  
+- **item_15**: Value = 226, Weight = 35  
+- **item_16**: Value = 201, Weight = 31  
+- **item_17**: Value = 300, Weight = 43  
+- **item_18**: Value = 257, Weight = 33  
+- **item_19**: Value = 257, Weight = 41  
+- **item_20**: Value = 279, Weight = 35  
+- **item_21**: Value = 223, Weight = 32  
+- **item_22**: Value = 152, Weight = 39  
+- **item_23**: Value = 300, Weight = 30  
+- **item_24**: Value = 209, Weight = 26  
+
+The knapsack has a **maximum weight capacity of 625 units**. Your task is to decide which items to include in the knapsack to maximize the total value of the selected items, while ensuring that the total weight of the selected items does not exceed the knapsack's capacity. Each item can either be **fully included** (selected) or **excluded** (not selected) from the knapsack; partial selections are not allowed.
+
+### Objective:
+Maximize the total value of the selected items.
+
+### Constraints:
+1. The combined weight of the selected items must not exceed **625 units**.
+2. Each item is either fully included or excluded (no partial selections).
+
+### Decisions to Make:
+For each of the 25 items, decide whether to include it in the knapsack (selected) or exclude it (not selected). The selection of items must adhere to the weight constraint while maximizing the total value.
+
+This problem requires careful consideration of the trade-offs between the value and weight of each item to ensure the optimal combination is chosen within the given constraints.

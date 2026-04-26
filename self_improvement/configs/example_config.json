@@ -1,0 +1,29 @@
+{
+  "model_name": "<YOUR_SFT_MODEL_PATH>",
+  "output_dir": "./self_improvement_output",
+  "train_data_path": "./data/rl_data_sample.jsonl",
+  "max_train_samples": 10000,
+  "seed": 42,
+  "grpo_config": {
+    "model_name": "<YOUR_SFT_MODEL_PATH>",
+    "learning_rate": 2e-6,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "num_train_epochs": 1,
+    "save_steps": 200,
+    "group_size": 4,
+    "max_completion_length": 8192,
+    "max_prompt_length": 2048,
+    "temperature": 1.0,
+    "top_p": 0.97,
+    "top_k": 20,
+    "beta": 0.1,
+    "max_grad_norm": 1.0,
+    "reward_model_api_key": "",
+    "reward_model_base_url": "",
+    "vllm_mode": "colocate",
+    "vllm_gpu_memory_utilization": 0.35,
+    "vllm_tensor_parallel_size": 4,
+    "output_dir": "./self_improvement_output"
+  }
+}

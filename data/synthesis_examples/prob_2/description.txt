@@ -1,0 +1,86 @@
+# Question:Imagine you are managing a network of distribution centers (facilities) that supply products to a group of customers. Your goal is to minimize the total cost of operating these facilities and delivering products to meet customer demands, while ensuring that the capacity constraints of each facility are respected.
+
+#### Facilities and Customers:
+- There are **4 facilities** (Facility 0, Facility 1, Facility 2, and Facility 3) that can be opened to serve customers. Each facility has a fixed cost associated with opening it:
+  - Opening Facility 0 costs **104,949 units**.
+  - Opening Facility 1 costs **95,825 units**.
+  - Opening Facility 2 costs **99,955 units**.
+  - Opening Facility 3 costs **98,733 units**.
+
+- There are **9 customers** (Customer 0 to Customer 8) with specific demands that must be met:
+  - Customer 0 requires **206 units**.
+  - Customer 1 requires **181 units**.
+  - Customer 2 requires **198 units**.
+  - Customer 3 requires **190 units**.
+  - Customer 4 requires **205 units**.
+  - Customer 5 requires **201 units**.
+  - Customer 6 requires **205 units**.
+  - Customer 7 requires **198 units**.
+  - Customer 8 requires **187 units**.
+
+#### Shipping Costs:
+The cost of shipping products from a facility to a customer varies depending on the facility and customer pair. Below are the shipping costs per unit:
+- **From Facility 0**:
+  - To Customer 0: **26 units**.
+  - To Customer 1: **25 units**.
+  - To Customer 2: **25 units**.
+  - To Customer 3: **25 units**.
+  - To Customer 4: **35 units**.
+  - To Customer 5: **33 units**.
+  - To Customer 6: **26 units**.
+  - To Customer 7: **30 units**.
+  - To Customer 8: **32 units**.
+
+- **From Facility 1**:
+  - To Customer 0: **32 units**.
+  - To Customer 1: **26 units**.
+  - To Customer 2: **28 units**.
+  - To Customer 3: **27 units**.
+  - To Customer 4: **29 units**.
+  - To Customer 5: **32 units**.
+  - To Customer 6: **29 units**.
+  - To Customer 7: **31 units**.
+  - To Customer 8: **26 units**.
+
+- **From Facility 2**:
+  - To Customer 0: **35 units**.
+  - To Customer 1: **30 units**.
+  - To Customer 2: **25 units**.
+  - To Customer 3: **27 units**.
+  - To Customer 4: **25 units**.
+  - To Customer 5: **32 units**.
+  - To Customer 6: **26 units**.
+  - To Customer 7: **26 units**.
+  - To Customer 8: **31 units**.
+
+- **From Facility 3**:
+  - To Customer 0: **25 units**.
+  - To Customer 1: **33 units**.
+  - To Customer 2: **27 units**.
+  - To Customer 3: **35 units**.
+  - To Customer 4: **30 units**.
+  - To Customer 5: **31 units**.
+  - To Customer 6: **25 units**.
+  - To Customer 7: **35 units**.
+  - To Customer 8: **33 units**.
+
+#### Facility Capacities:
+Each facility has a maximum capacity that limits the total amount of products it can ship to all customers:
+- Facility 0 can handle up to **970 units**.
+- Facility 1 can handle up to **1,003 units**.
+- Facility 2 can handle up to **1,048 units**.
+- Facility 3 can handle up to **961 units**.
+
+#### Constraints:
+1. **Demand Satisfaction**: The total amount shipped to each customer from all facilities must exactly match their demand. For example, Customer 0 must receive exactly **206 units** from any combination of the facilities.
+
+2. **Facility Activation**: If a facility is used to ship products to any customer, it must be opened. For example, if Facility 0 ships any amount to Customer 0, Facility 0 must be opened, incurring its fixed cost of **104,949 units**.
+
+3. **Capacity Limits**: The total amount shipped from a facility to all customers cannot exceed its capacity. For example, the total amount shipped from Facility 0 to all customers combined must not exceed **970 units**.
+
+#### Objective:
+Your task is to determine which facilities to open and how much to ship from each facility to each customer to minimize the total cost. The total cost includes:
+- The fixed costs of opening the selected facilities.
+- The variable shipping costs based on the amount shipped from each facility to each customer.
+
+The goal is to ensure all customer demands are met, no facility exceeds its capacity, and the total cost is minimized.

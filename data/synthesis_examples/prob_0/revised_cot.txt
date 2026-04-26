@@ -1,0 +1,80 @@
+<think>This is a classic 0-1 knapsack problem where we need to select a subset of items to maximize total value without exceeding a weight capacity. The problem has 25 items with given values and weights, and a capacity of 625 units. Each item can either be taken or left, making it a binary decision problem.
+
+---
+
+The mathematical formulation is straightforward. Let's define binary decision variables x_i for each item i (i=0,...,24), where x_i = 1 if item i is selected, and 0 otherwise. The objective is to maximize the sum of values of selected items: ∑ v_i * x_i. The constraint is that the total weight of selected items must not exceed the capacity: ∑ w_i * x_i ≤ 625.
+
+This gives us a clear integer linear programming model. The parameters are all integers, and the capacity is relatively large compared to individual item weights, so we expect a solution that uses most of the capacity.
+
+---
+
+Now, implementing this in Pyomo. We'll create a ConcreteModel with binary variables for each item. The objective function will sum the values of selected items, and we'll add a single weight constraint. We'll use the GLPK solver since it's open-source and suitable for this MILP problem.
+
+Looking at the initial implementation, it correctly sets up the model but lacks some robustness checks. We should validate that the input data has the correct length and that capacity is non-negative. More importantly, we need to check the solver's termination condition to ensure an optimal solution was found before returning the objective value.
+
+---
+
+Here's the refined implementation with these improvements:
+
+</think>```python
+from pyomo.environ import *
+
+def solve():
+    '''
+    Knapsack problem with 25 items and capacity 625.
+    
+    Returns
+    -------
+    float
+        Optimal objective value (total value of selected items).
+        
+    Raises
+    ------
+    Exception
+        If solver fails to find optimal solution.
+    '''
+    NUM_ITEMS = 25
+    model = ConcreteModel()
+    
+    # Item data
+    values = [327, 314, 231, 184, 310, 312, 287, 273, 280, 329,
+              259, 309, 249, 189, 251, 226, 201, 300, 257, 257,
+              279, 223, 152, 300, 209]
+    weights = [29, 48, 30, 42, 45, 39, 36, 46, 33, 55, 38, 51,
+               38, 44, 43, 35, 31, 43, 33, 41, 35, 32, 39, 30, 26]
+    capacity = 625
+    
+    # Validate inputs
+    if len(values) != NUM_ITEMS or len(weights) != NUM_ITEMS:
+        raise ValueError("Values and weights must have exactly 25 items")
+    
+    if capacity < 0:
+        raise ValueError("Capacity must be non-negative")
+    
+    # Create variables
+    model.x = Var(range(NUM_ITEMS), within=Binary)
+    
+    # Objective: maximize total value
+    model.obj = Objective(
+        expr=sum(values[i] * model.x[i] for i in range(NUM_ITEMS)),
+        sense=maximize
+    )
+    
+    # Constraint: weight limit
+    model.weight_con = Constraint(
+        expr=sum(weights[i] * model.x[i] for i in range(NUM_ITEMS)) <= capacity
+    )
+    
+    # Solve
+    solver = SolverFactory('glpk')
+    results = solver.solve(model)
+    
+    # Check solution status
+    if results.solver.termination_condition != TerminationCondition.optimal:
+        raise Exception(f"Solver failed to find optimal solution. "
+                       f"Termination condition: {results.solver.termination_condition}")
+    
+    optimal_value = value(model.obj)
+    
+    return optimal_value
+```

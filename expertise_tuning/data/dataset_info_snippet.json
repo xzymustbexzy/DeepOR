@@ -1,0 +1,11 @@
+{
+  "deepor_sft": {
+    "file_name": "deepor_sft.json",
+    "formatting": "alpaca",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  }
+}

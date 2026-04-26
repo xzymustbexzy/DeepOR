@@ -1,0 +1,16 @@
+# DeepOR: Top-level dependency guide
+#
+# DeepOR has three stages with different dependencies.
+# Install the requirements for the stage(s) you need.
+
+# Stage 1: Data Synthesis (Chain-of-Experts)
+#   cd data_synthesis && pip install -r requirements.txt
+
+# Stage 2: Expertise Tuning (SFT via LLaMA-Factory)
+#   See https://github.com/hiyouga/LLaMA-Factory for LLaMA-Factory installation.
+#   cd expertise_tuning && pip install -e ".[torch,metrics]"
+
+# Stage 3: Self-Improvement Learning (GRPO)
+#   cd self_improvement && pip install -r requirements.txt
+
+# All stages require Python >= 3.9
